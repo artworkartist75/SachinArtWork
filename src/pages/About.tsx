@@ -1,6 +1,5 @@
 import artistInfo from "../data/artistInfo";
 import collabrationInfo from "../layouts/collabrationInfo";
-import { FaYoutube } from "react-icons/fa6";
 
 function About() {
   return (

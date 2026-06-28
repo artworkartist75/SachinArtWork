@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   FaWhatsapp,
   FaInstagram,
@@ -6,7 +5,6 @@ import {
   FaLinkedin,
   FaTimes,
 } from "react-icons/fa";
-import { FaC } from "react-icons/fa6";
 
 import socialMedia from "../data/socialMedia";
 
