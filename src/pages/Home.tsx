@@ -5,58 +5,114 @@ import ContactPopup from '../layouts/ContactPopup';
 import socialMedia from '../data/socialMedia';
 import ClientReviews from '../layouts/reviewClient';
 import ArtServices from '../layouts/Services';
+import { useGetArtist } from '../hooks/useArtist';
+import { useGetArtwork } from '../hooks/useArtwork';
+// import { mapArtistInfo } from '../types/artist.data';
+import { mapInfo } from '../types/home.data';
 
 function Home() {
 
-    const [openPopup, setOpenPopup] = useState(false);
+const [openPopup, setOpenPopup] = useState(false);
+const [showFullBio, setShowFullBio] = useState(false);
+const { data: artistData, isLoading:artistLoading } = useGetArtist();
+const { data: artWorkData, isLoading:artworkLoading } = useGetArtwork();
 
-  return (
-    <div className="min-h-screen bg-black text-white px-5 md:px-16 py-10 overflow-hidden">
-      
+  console.log(artistData);
+  if (
+    artistLoading 
+    || artworkLoading
+    //|| collabLoading
+  ) {
+    return <h2>Loading...</h2>;
+  }
+
+  const artistInfo = mapInfo(
+    artistData,
+    artWorkData,
+    // reviewData
+  );
+
+  const artType = [
+      "Custom Artwork",
+    "Portrait Sketch",
+    "Canvas Painting",
+    "Digital art",
+  ];
+
+
+  const bio = artistInfo.bio || "";
+  const maxLength = 300;
+  const isLongBio = bio.length > maxLength;
+
+return (
+    <div className="min-h-screen bg-black text-white ">//px-5 md:px-16 py-20 overflow-hidden
+
         {/* Hero Section */}
-        <section className="grid md:grid-cols-2 gap-10 items-center">
+        <section className="grid md:grid-cols-2 gap-1 items-center w-full min-h-screen bg-cover bg-center bg-no-repeat"
+            style={{
+                backgroundImage: `
+                linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.8)),
+                url(${artistInfo.backgroundImage})
+                `,
+                backgroundAttachment:"fixed"
+            }}
+        >
             
             {/* Left Content */}
-            <div className="space-y-6">
-            <p className="uppercase tracking-[5px] text-gray-400 text-sm">
-                Freelance Artist
-            </p>
+            <div className="space-y-6 max-w-7xl mx-auto px-5 md:px-16 py-20  min-h-[80vh]">
+                <p className="uppercase tracking-[5px] text-sm text-orange-500">
+                    Freelance Artist
+                </p>
 
-            <h1 className="text-3xl md:text-6xl font-bold leading-tight">
-                SKETCHES, PAINTINGS & DIGITAL ARTWORK
-            </h1>
+                <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                    SKETCHES, PAINTINGS & DIGITAL ARTWORK
+                </h1>
 
-            <p className="text-gray-400 max-w-lg leading-7">
-                Hi, I'm Kapil, a passionate artist focused on realistic
-                sketches, creative paintings, and modern digital artwork
-                that brings imagination to life.
-            </p>
+                <p className="text-gray-200 max-w-lg leading-7 text-[1rem]">
+                    {/* Hi, I'm Kapil, a passionate artist focused on realistic
+                    sketches, creative paintings, and modern digital artwork
+                    that brings imagination to life. */}
+                    {showFullBio || !isLongBio
+                    ? bio
+                    : `${bio.slice(0, maxLength)}...`}
 
-            {/* Buttons */}
-            <div className="flex items-center gap-5">
-                <button className="bg-orange-500 hover:bg-orange-600 text-[1rem] px-2 py-1 md:px-6 md:py-3 rounded-lg font-semibold transition duration-300">
-                Explore Art ↗
-                </button>
+                    {isLongBio && (
+                    <button
+                        onClick={() => setShowFullBio(!showFullBio)}
+                        className="ml-2 text-orange-500 hover:text-orange-400 font-semibold"
+                    >
+                        {showFullBio ? "Show Less" : "Read More"}
+                    </button>
+                    )}
+                </p>
 
-                <button
-                 onClick={() => setOpenPopup(true)}
-                // window.open(
-                //     "https://wa.me/916264990928?text=Hello%20I%20want%20to%20connect%20with%20you%20regarding%20your%20artwork.",
-                //     "_blank"
-                // )
-                className="border border-gray-600 hover:border-white text-[1rem] px-2 py-1 md:px-6 md:py-3 rounded-lg font-semibold transition duration-300"
-                >
-                Contact Me
-                </button>
-            </div>
+                {/* Buttons */}
+                <div className="flex items-center gap-5">
+                    <button className="bg-orange-500 hover:bg-orange-600 text-[1rem] px-2 py-1 md:px-6 md:py-3 rounded-lg font-semibold transition duration-300">
+                    Explore Art ↗
+                    </button>
 
-            {/* Art Types */}
-            <div className="flex flex-wrap items-center gap-6 pt-8 text-gray-500 font-semibold">
-                <span>Portrait Sketch</span>
-                <span>Canvas Painting</span>
-                <span>Digital Art</span>
-                <span>Custom Artwork</span>
-            </div>
+                    <button
+                    onClick={() => setOpenPopup(true)}
+                    className="border border-gray-600 hover:border-white text-[1rem] px-2 py-1 md:px-6 md:py-3 rounded-lg font-semibold transition duration-300"
+                    >
+                    Contact Me
+                    </button>
+                </div>
+
+                {/* Art Types */}
+                <div className="flex flex-wrap items-center gap-2 pt-4 text-white font-semibold">
+                    {
+                        artType.map((art,index) => (
+                            <span 
+                                key={index} 
+                                className="border px-3 py-1 rounded-lg font-semibold hover:border-white transition duration-300"
+                            > 
+                             {art}
+                            </span>
+                        ))
+                    }    
+                </div>
             </div>
 
             {/* Right Image */}
@@ -68,9 +124,9 @@ function Home() {
             {/* Main Card */}
             <div className="relative border border-gray-800 bg-[#111] rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                src="https://images.unsplash.com/photo-1517841905240-472988babdf9"
-                alt="Artist"
-                className="w-full md:w-[500px] h-[550px] object-cover"
+                    src={artistInfo.picture}
+                    alt="Artist"
+                    className="w-full md:w-[500px] h-[540px] object-cover"
                 />
 
                 {/* Overlay */}

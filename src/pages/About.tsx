@@ -1,15 +1,54 @@
-import artistInfo from "../data/artistInfo";
+import { useState } from "react";
+// import artistInfo from "../data/artistInfo";
+import { useGetArtist } from "../hooks/useArtist";
+import { useGetArtwork } from "../hooks/useArtwork";
+// import { useGetCollab } from "../hooks/useCollab";
 import collabrationInfo from "../layouts/collabrationInfo";
+import { mapArtistInfo } from "../types/artist.data";
 
 function About() {
+  const { data: artistData, isLoading:artistLoading } = useGetArtist();
+  const { data: artWorkData, isLoading:artworkLoading } = useGetArtwork();
+  // const { data: collabData, isLoading:collabLoading } = useGetCollab();
+  const [showFullBio, setShowFullBio] = useState(false);
+
+  console.log(artistData);
+  if (
+    artistLoading 
+    || artworkLoading
+    //|| collabLoading
+  ) {
+    return <h2>Loading...</h2>;
+  }
+
+  const artistInfo = mapArtistInfo(
+    artistData,
+    artWorkData,
+    // collaborationData
+  );
+
+
+  const bio = artistInfo.bio || "";
+  const maxLength = 400;
+  const isLongBio = bio.length > maxLength;
+
   return (
-    <div className="min-h-screen bg-black text-white px-5 md:px-16 py-12 md:py-20">
+    <div className="min-h-screen bg-black text-white">
 
       {/* Hero Section */}
-      <section className="grid md:grid-cols-2 gap-12 items-center">
+      <section className="grid md:grid-cols-2 gap-12 items-center w-full min-h-screen bg-cover bg-center bg-no-repeat"
+      // className="w-full min-h-screen bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+          url(${artistInfo.backgroundImage})
+        `,
+        backgroundAttachment:"fixed"
+      }}
+      >
 
         {/* Left Content */}
-        <div>
+        <div className="max-w-7xl mx-auto px-5 md:px-10 py-20  min-h-[80vh] ">
 
           <p className="uppercase tracking-[4px] text-orange-500 text-sm mb-4">
             About Artist
@@ -20,18 +59,30 @@ function About() {
             Into Artwork
           </h1>
 
-          <p className="text-gray-400 leading-7 text-sm md:text-base mb-6">
-            Hi, I'm Kapil — a passionate sketch artist and digital creator
+          <p className="text-gray-200 leading-7 text-sm md:text-base mb-6">
+            {/* Hi, I'm Kapil — a passionate sketch artist and digital creator
             focused on creating emotional, realistic, and visually engaging
             artworks. My work combines creativity, storytelling, and artistic
-            details to transform ideas into meaningful art pieces.
+            details to transform ideas into meaningful art pieces. */}
+            {showFullBio || !isLongBio
+              ? bio
+              : `${bio.slice(0, maxLength)}...`}
+
+            {isLongBio && (
+              <button
+                onClick={() => setShowFullBio(!showFullBio)}
+                className="ml-2 text-orange-500 hover:text-orange-400 font-semibold"
+              >
+                {showFullBio ? "Show Less" : "Read More"}
+              </button>
+            )}
           </p>
 
-          <p className="text-gray-400 leading-7 text-sm md:text-base mb-8">
+          {/* <p className="text-gray-400 leading-7 text-sm md:text-base mb-8">
             From handmade pencil sketches to modern digital illustrations,
             every artwork reflects dedication, patience, and artistic vision.
             I love exploring different styles and bringing unique concepts to life.
-          </p>
+          </p> */}
 
           {/* Stats */}
           <div className="flex flex-wrap gap-6">

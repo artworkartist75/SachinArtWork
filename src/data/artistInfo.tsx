@@ -1,3 +1,6 @@
+// import { useGetArtist } from "../hooks/useArtist";
+// import { useGetCollab } from "../hooks/useCollab";
+
 const artistInfo = {
     name: "Kapil Ahirwar",
     profession: "Sketch Artist & Digital Creator",
@@ -11,3 +14,15 @@ const artistInfo = {
 };
 
 export default artistInfo;
+
+// export const useArtistInfo = () => {
+//     const artistData = useGetArtist();
+//     const collabData = useGetCollab();
+//     // console.log(artistData);
+    
+//     return {
+//         artistData,
+//         collabData
+//     };
+
+// };
