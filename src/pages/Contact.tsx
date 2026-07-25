@@ -11,11 +11,17 @@ import {
   FaPhoneAlt,
 } from "react-icons/fa";
 
+// import socialMedia from "../data/socialMedia";
 import { FaYoutube } from "react-icons/fa6";
-
-import socialMedia from "../data/socialMedia";
+import { useGetArtist } from "../hooks/useArtist";
+import { mapMedia } from "../types/contact.data";
 
 function Contact() {
+  const { data: artistData, isLoading:artistLoading } = useGetArtist();
+  if(artistLoading) return <div>...Loading</div>
+  const socialMedia = mapMedia(
+    artistData
+  );
 
   const socialLinks = [
     {

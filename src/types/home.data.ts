@@ -11,15 +11,11 @@ export const mapInfo = (
         name: artist?.name || "",
         profession: artist?.profession || "",
         bio: artist?.bio || "",
-        stats: {
-            artworksCreated: artworkData.length,
-            happyClients: collaborationData.length ==0 ? 15: 0,
-            yearsExperience: artist?.experience || 0,
-        },
         picture: artist?.profileImage?.[0]?.url || "",
         backgroundImage: artist?.coverImage?.[0]?.url || "",
         mobileNumber: artist?.phone,
         Email:artist?.email,
+        featuredArtwork:artist?.featuredArtwork,
         whatsapplink:`https://wa.me/91${artist?.phone}?text=Hello%20I%20want%20to%20connect%20with%20you%20regarding%20your%20artwork.`,
         InstaUserName: "sachin_arts_7",
         instalink: socialLink?.instagram,
@@ -38,20 +34,22 @@ export const mapInfo = (
             },
             {
                 title: "Artwork Created",
-                achievement: `${artworkData.length ==0 ? 15: 0}`+"+",
+                achievement: `${artworkData.length || 0}+`,
             },
             {
                 title: "Collaborations",
-                achievement: `${collaborationData.length ==0 ? 15: 0}`+"+",
+                achievement: `${collaborationData.length==0 ? 2: collaborationData.length}+`,
             },
             {
                 title: "Happy Clients",
-                achievement: `${ReviewData.length ==0 ? 15: 0}`+"+",
+                achievement: `${ReviewData.length == 0 ? 15: ReviewData.length }+`,
             },
             {
                 title: "Years Experience",
-                achievement: `${artist?.experience || 0}`+"+" ,
+                achievement: `${artist?.experience || 0}+` ,
             },
         ],
     };
 };
+
+export type ArtistInfo = ReturnType<typeof mapInfo>;

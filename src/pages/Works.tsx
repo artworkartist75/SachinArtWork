@@ -5,11 +5,16 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
 import ArtService from "../data/artWorks";
-import Works from "../data/Works";
+// import Works from "../data/Works";
+import { useGetArtwork } from "../hooks/useArtwork";
+import { mapFeaturedArtworks } from "../types/featured.data";
 
 function ArtServices() {
-
   const icons = ["✏️", "🎨", "🖥️", "💡"];
+  const { data: artworkData, isLoading:artLoading } = useGetArtwork();
+  if(artLoading) return <div>...Loading</div>
+
+  const artwork = mapFeaturedArtworks(artworkData);
 
   return (
     <Box
@@ -69,7 +74,7 @@ function ArtServices() {
           md: 4,
         }}
       >
-        {Works.map((work) => (
+        {artwork.map((work) => (
           <Grid
             key={work.id}
             size={{
@@ -99,9 +104,9 @@ function ArtServices() {
               <CardContent
                 sx={{
                   p: {
-                    xs: 2,
+                    xs: 1.5,
                     sm: 2.5,
-                    md: 4,
+                    md: 3,
                   },
                 }}
               >
@@ -112,7 +117,7 @@ function ArtServices() {
                   alt={work.title}
                   sx={{
                     width: "100%",
-                    height: "200px",
+                    height: "240px",
                     objectFit: "cover",
                     borderRadius: "12px",
                     mb: 2,
@@ -123,7 +128,7 @@ function ArtServices() {
                   sx={{
                     fontWeight: "bold",
                     fontSize: {
-                      xs: "0.95rem",
+                      xs: "1rem",
                       sm: "1.2rem",
                       md: "1.6rem",
                     },
@@ -141,7 +146,7 @@ function ArtServices() {
                       md: 1.8,
                     },
                     fontSize: {
-                      xs: "0.72rem",
+                      xs: "0.8rem",
                       sm: "0.88rem",
                       md: "1rem",
                     },
@@ -152,10 +157,10 @@ function ArtServices() {
                     },
                     WebkitBoxOrient: "vertical",
                     overflow: "hidden",
-                    minHeight: {
-                      xs: "70px",
-                      md: "120px",
-                    },
+                    // minHeight: {
+                    //   xs: "70px",
+                    //   md: "120px",
+                    // },
                   }}
                 >
                   {work.description}

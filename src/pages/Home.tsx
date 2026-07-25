@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../index.css';
 import FeaturedWorks from '../layouts/Featured';
 import ContactPopup from '../layouts/ContactPopup';
-import socialMedia from '../data/socialMedia';
+// import socialMedia from '../data/socialMedia';
 import ClientReviews from '../layouts/reviewClient';
 import ArtServices from '../layouts/Services';
 import { useGetArtist } from '../hooks/useArtist';
@@ -17,7 +17,7 @@ const [showFullBio, setShowFullBio] = useState(false);
 const { data: artistData, isLoading:artistLoading } = useGetArtist();
 const { data: artWorkData, isLoading:artworkLoading } = useGetArtwork();
 
-  console.log(artistData);
+//   console.log(artistData);
   if (
     artistLoading 
     || artworkLoading
@@ -32,13 +32,14 @@ const { data: artWorkData, isLoading:artworkLoading } = useGetArtwork();
     // reviewData
   );
 
+//   console.log("info : ",artistInfo.featuredArtwork);
+
   const artType = [
-      "Custom Artwork",
+    "Custom Artwork",
     "Portrait Sketch",
     "Canvas Painting",
     "Digital art",
   ];
-
 
   const bio = artistInfo.bio || "";
   const maxLength = 300;
@@ -143,7 +144,10 @@ return (
         </section>
 
         {/* Featured Works Section */}
-        <FeaturedWorks/>
+        {
+            artistInfo.featuredArtwork.length > 0 ? 
+            (<FeaturedWorks/>):(<></>)
+        }
 
         {/* Client Reviews Section */}
         <ClientReviews/>
@@ -171,7 +175,7 @@ return (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
 
                 {
-                    socialMedia.artMilestones.map((milestone, index) => (
+                    artistInfo.artMilestones.map((milestone, index) => (
                         <div
                             key={index}
                             className="bg-[#111] border border-gray-800 rounded-3xl p-6 text-center hover:border-orange-500 transition duration-300"
@@ -192,6 +196,7 @@ return (
         <ContactPopup
             open={openPopup}
             setOpen={setOpenPopup}
+            artist={artistInfo}
         />
     </div>
   );

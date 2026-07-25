@@ -6,16 +6,16 @@ import {
   FaTimes,
 } from "react-icons/fa";
 
-import socialMedia from "../data/socialMedia";
+// import socialMedia from "../data/socialMedia";
+import type { ArtistInfo } from "../types/home.data";
 
 type Props = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  artist: ArtistInfo
 };
 
-function ContactPopup({open, setOpen}: Props) {
-  
-
+function ContactPopup({open, setOpen, artist}: Props) {
   return (
     <>
       {/* Popup */}
@@ -47,7 +47,7 @@ function ContactPopup({open, setOpen}: Props) {
               
               {/* WhatsApp */}
               <a
-                href={socialMedia.whatsapplink}
+                href={artist.whatsapplink}
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#1a1a1a] hover:bg-green-500 transition duration-300 rounded-2xl p-5 flex flex-col items-center gap-3"
@@ -58,7 +58,7 @@ function ContactPopup({open, setOpen}: Props) {
 
               {/* Instagram */}
               <a
-                href={socialMedia.instalink}
+                href={artist.instalink}
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#1a1a1a] hover:bg-pink-500 transition duration-300 rounded-2xl p-5 flex flex-col items-center gap-3"
@@ -69,7 +69,7 @@ function ContactPopup({open, setOpen}: Props) {
 
               {/* Facebook */}
               <a
-                href={socialMedia.facebooklink}
+                href={artist.facebooklink}
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#1a1a1a] hover:bg-blue-500 transition duration-300 rounded-2xl p-5 flex flex-col items-center gap-3"
@@ -80,7 +80,7 @@ function ContactPopup({open, setOpen}: Props) {
 
               {/* LinkedIn */}
               <a
-                href={socialMedia.linkedinlink}
+                href={artist.linkedinlink}
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#1a1a1a] hover:bg-sky-500 transition duration-300 rounded-2xl p-5 flex flex-col items-center gap-3"

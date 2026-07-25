@@ -34,25 +34,7 @@ const artworks = [
     category: "Canvas Art",
     description:
       "A canvas painting featuring a mesmerizing play of golden lights reflecting on a calm lake during sunset.",
-  },
-  {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
-    title: "Creative Soul",
-    category: "Digital Art",
-    description:
-      "A digital artwork representing the creative soul of an artist, with vibrant colors and abstract forms symbolizing imagination.",
-  },
-  {
-    id: 6,
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475",
-    title: "Lonely Streets",
-    category: "Sketch Art",
-    description:
-      "A sketch art piece depicting the quiet and lonely streets of a city at night, with intricate details and a moody atmosphere.",
-  },
+  }
 ];
 
 export default artworks;
