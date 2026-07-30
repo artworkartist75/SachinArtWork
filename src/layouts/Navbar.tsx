@@ -6,7 +6,7 @@ function Navbar() {
 
       {/* Logo */}
       <span className="text-2xl font-extrabold md:text-3xl text-white">
-        ArtWork
+        Sachin Art's
       </span>
 
       {/* Nav Links */}
