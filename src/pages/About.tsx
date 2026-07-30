@@ -5,6 +5,7 @@ import collabrationInfo from "../layouts/collabrationInfo";
 import { mapArtistInfo } from "../types/artist.data";
 import SEO from "../services/SEO";
 import { websiteJsonLdAboutPage } from "../services/JSON-LD";
+import Loader from "../layouts/Loader";
 
 
 function About() {
@@ -13,13 +14,13 @@ function About() {
   // const { data: collabData, isLoading:collabLoading } = useGetCollab();
   const [showFullBio, setShowFullBio] = useState(false);
 
-  console.log(artistData);
+  // console.log(artistData);
   if (
     artistLoading 
     || artworkLoading
     //|| collabLoading
   ) {
-    return <h2>Loading...</h2>;
+    return <Loader/>;
   }
 
   const artistInfo = mapArtistInfo(

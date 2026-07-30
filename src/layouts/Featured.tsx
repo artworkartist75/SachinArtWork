@@ -55,8 +55,6 @@ function FeaturedWorks() {
     featureData
   )
 
-  console.log("",featureWork.length);
-
   return (
     <>
     {

@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { useYoutubeStats } from '../hooks/useStats';
 import { websiteJsonLdHomePage } from '../services/JSON-LD';
 import SEO from '../services/SEO';
+import Loader from '../layouts/Loader';
 
 function Home() {
 
@@ -27,7 +28,7 @@ function Home() {
         artistLoading || artworkLoading || statsLoading
         //|| collabLoading
     ) {
-        return <h2>Loading...</h2>;
+        return <Loader/>;
     }
 
     const artistInfo = mapInfo(
@@ -159,8 +160,10 @@ return (
 
             {/* Featured Works Section */}
             {
-                artistInfo.featuredArtwork.length > 0 ? 
-                (<FeaturedWorks/>):(<></>)
+                // artistInfo.featuredArtwork.length > 0 ? 
+                // (
+                <FeaturedWorks/>
+            // ):(<></>)
             }
 
             {/* Client Reviews Section */}

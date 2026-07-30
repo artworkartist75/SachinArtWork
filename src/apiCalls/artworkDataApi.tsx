@@ -8,6 +8,6 @@ export const getArtworkData = async () => {
 
 export const getFeaturedArtwork = async () => {
     const res = await axios.get(`${import.meta.env.VITE_API_URL}/featuredArtwork`);
-    console.log("getFeaturedArtWork data -> ",res.data.data);
+    // console.log("getFeaturedArtWork data -> ",res.data.data);
     return res.data.data;
 }

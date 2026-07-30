@@ -7,7 +7,7 @@ export const mapInfo = (
 ) => {
     const artist = artistData?.[0];
     const socialLink = artist?.socialLinks;
-    console.log(stats?.subscriberCount)
+    // console.log(stats?.subscriberCount)
 
     return {
         name: artist?.name || "",

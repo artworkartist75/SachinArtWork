@@ -8,11 +8,13 @@ import { useGetArtwork } from "../hooks/useArtwork";
 import { mapFeaturedArtworks } from "../types/featured.data";
 import SEO from "../services/SEO";
 import { websiteJsonLdWorkPage } from "../services/JSON-LD";
+import Loader from "../layouts/Loader";
 
 function ArtServices() {
   const icons = ["✏️", "🎨", "🖥️", "💡"];
   const { data: artworkData, isLoading:artLoading } = useGetArtwork();
-  if(artLoading) return <div>...Loading</div>
+  
+  if(artLoading) return <Loader/>
 
   const artwork = mapFeaturedArtworks(artworkData);
 

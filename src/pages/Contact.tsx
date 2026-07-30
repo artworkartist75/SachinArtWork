@@ -15,10 +15,13 @@ import { FaYoutube } from "react-icons/fa6";
 import { useGetArtist } from "../hooks/useArtist";
 import { mapMedia } from "../types/contact.data";
 import SEO from "../services/SEO";
+import Loader from "../layouts/Loader";
 
 function Contact() {
   const { data: artistData, isLoading:artistLoading } = useGetArtist();
-  if(artistLoading) return <div>...Loading</div>
+
+  if(artistLoading) return <Loader/>
+  
   const socialMedia = mapMedia(
     artistData
   );
