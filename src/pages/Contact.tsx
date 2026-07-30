@@ -11,10 +11,10 @@ import {
   FaPhoneAlt,
 } from "react-icons/fa";
 
-// import socialMedia from "../data/socialMedia";
 import { FaYoutube } from "react-icons/fa6";
 import { useGetArtist } from "../hooks/useArtist";
 import { mapMedia } from "../types/contact.data";
+import SEO from "../services/SEO";
 
 function Contact() {
   const { data: artistData, isLoading:artistLoading } = useGetArtist();
@@ -54,529 +54,536 @@ function Contact() {
   ];
 
   return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        backgroundColor: "#000",
-        color: "#fff",
-
-        px: {
-          xs: 2,
-          sm: 3,
-          md: 10,
-        },
-
-        py: {
-          xs: 8,
-          md: 12,
-        },
-      }}
-    >
-
-      {/* Heading */}
+    <>
+      <SEO
+        title="Contact | Sachin Artwork"
+        description="Contact Sachin for commissioned paintings, portraits and collaborations."
+        url="https://sachinartwork.vercel.app/contact"
+      />
       <Box
         sx={{
-          textAlign: "center",
+          minHeight: "100vh",
+          backgroundColor: "#000",
+          color: "#fff",
 
-          mb: {
-            xs: 6,
+          px: {
+            xs: 2,
+            sm: 3,
             md: 10,
+          },
+
+          py: {
+            xs: 8,
+            md: 12,
           },
         }}
       >
 
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            letterSpacing: "4px",
-            color: "#f97316",
-
-            fontSize: {
-              xs: "0.72rem",
-              md: "0.85rem",
-            },
-
-            mb: 2,
-          }}
-        >
-          Contact
-        </Typography>
-
-        <Typography
-          sx={{
-            fontWeight: "bold",
-
-            fontSize: {
-              xs: "2.2rem",
-              sm: "3rem",
-              md: "5rem",
-            },
-          }}
-        >
-          Let’s Connect
-        </Typography>
-
-        <Typography
-          sx={{
-            color: "#9ca3af",
-            maxWidth: "720px",
-            mx: "auto",
-            mt: 3,
-            lineHeight: 1.8,
-
-            px: {
-              xs: 1,
-              sm: 0,
-            },
-
-            fontSize: {
-              xs: "0.9rem",
-              md: "1rem",
-            },
-          }}
-        >
-          Interested in custom sketches, paintings, or collaborations?
-          Feel free to connect through social platforms or email.
-        </Typography>
-
+        {/* Heading */}
         <Box
           sx={{
-            width: "80px",
-            height: "4px",
-            backgroundColor: "#f97316",
-            mx: "auto",
-            mt: 4,
-            borderRadius: "20px",
-          }}
-        />
+            textAlign: "center",
 
-      </Box>
-
-      {/* Main Grid */}
-      <Grid
-        container
-        spacing={{
-          xs: 3,
-          md: 5,
-        }}
-      >
-
-        {/* Left Side */}
-        <Grid
-          size={{
-            xs: 12,
-            md: 6,
+            mb: {
+              xs: 6,
+              md: 10,
+            },
           }}
         >
 
-          <Card
+          <Typography
             sx={{
-              background:
-                "linear-gradient(145deg, #111, #1a1a1a)",
+              textTransform: "uppercase",
+              letterSpacing: "4px",
+              color: "#f97316",
 
-              border: "1px solid #262626",
-
-              borderRadius: {
-                xs: "22px",
-                md: "30px",
+              fontSize: {
+                xs: "0.72rem",
+                md: "0.85rem",
               },
 
-              p: {
-                xs: 3,
-                md: 5,
-              },
-
-              color: "#fff",
-              height: "100%",
+              mb: 2,
             }}
           >
+            Contact
+          </Typography>
 
-            <Typography
-              sx={{
-                fontWeight: "bold",
+          <Typography
+            sx={{
+              fontWeight: "bold",
 
-                mb: 5,
+              fontSize: {
+                xs: "2.2rem",
+                sm: "3rem",
+                md: "5rem",
+              },
+            }}
+          >
+            Let’s Connect
+          </Typography>
 
-                fontSize: {
-                  xs: "1.7rem",
-                  md: "2.4rem",
-                },
-              }}
-            >
-              Contact Information
-            </Typography>
+          <Typography
+            sx={{
+              color: "#9ca3af",
+              maxWidth: "720px",
+              mx: "auto",
+              mt: 3,
+              lineHeight: 1.8,
 
-            {/* Email */}
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 2,
-                mb: 4,
-              }}
-            >
+              px: {
+                xs: 1,
+                sm: 0,
+              },
 
-              <Box
-                sx={{
-                  width: {
-                    xs: 50,
-                    md: 60,
-                  },
+              fontSize: {
+                xs: "0.9rem",
+                md: "1rem",
+              },
+            }}
+          >
+            Interested in custom sketches, paintings, or collaborations?
+            Feel free to connect through social platforms or email.
+          </Typography>
 
-                  height: {
-                    xs: 50,
-                    md: 60,
-                  },
+          <Box
+            sx={{
+              width: "80px",
+              height: "4px",
+              backgroundColor: "#f97316",
+              mx: "auto",
+              mt: 4,
+              borderRadius: "20px",
+            }}
+          />
 
-                  borderRadius: "50%",
-                  backgroundColor: "#f97316",
+        </Box>
 
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-
-                  flexShrink: 0,
-                  fontSize: "1.4rem",
-                }}
-              >
-                <FaEnvelope />
-              </Box>
-
-              <Box>
-
-                <Typography
-                  sx={{
-                    color: "#9ca3af",
-
-                    fontSize: {
-                      xs: "0.75rem",
-                      md: "0.9rem",
-                    },
-                  }}
-                >
-                  Email
-                </Typography>
-
-                <Typography
-                  component="a"
-                  href={`mailto:${socialMedia.Email}`}
-
-                  sx={{
-                    color: "#fff",
-                    textDecoration: "none",
-                    fontWeight: "500",
-
-                    transition: "0.3s",
-
-                    fontSize: {
-                      xs: "0.88rem",
-                      md: "1.1rem",
-                    },
-
-                    wordBreak: "break-word",
-
-                    "&:hover": {
-                      color: "#f97316",
-                    },
-                  }}
-                >
-                  {socialMedia.Email}
-                </Typography>
-
-              </Box>
-
-            </Box>
-
-            {/* Phone */}
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 2,
-                mb: 4,
-              }}
-            >
-
-              <Box
-                sx={{
-                  width: {
-                    xs: 50,
-                    md: 60,
-                  },
-
-                  height: {
-                    xs: 50,
-                    md: 60,
-                  },
-
-                  borderRadius: "50%",
-                  backgroundColor: "#f97316",
-
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-
-                  flexShrink: 0,
-                  fontSize: "1.4rem",
-                }}
-              >
-                <FaPhoneAlt />
-              </Box>
-
-              <Box>
-
-                <Typography
-                  sx={{
-                    color: "#9ca3af",
-
-                    fontSize: {
-                      xs: "0.75rem",
-                      md: "0.9rem",
-                    },
-                  }}
-                >
-                  Phone
-                </Typography>
-
-                <Typography
-                  component="a"
-                  href={`tel:+${socialMedia.mobileNumber}`}
-
-                  sx={{
-                    color: "#fff",
-                    textDecoration: "none",
-                    fontWeight: "500",
-
-                    transition: "0.3s",
-
-                    fontSize: {
-                      xs: "0.88rem",
-                      md: "1.1rem",
-                    },
-
-                    "&:hover": {
-                      color: "#f97316",
-                    },
-                  }}
-                >
-                  +{socialMedia.mobileNumber}
-                </Typography>
-
-              </Box>
-
-            </Box>
-
-            {/* WhatsApp */}
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 2,
-              }}
-            >
-
-              <Box
-                sx={{
-                  width: {
-                    xs: 50,
-                    md: 60,
-                  },
-
-                  height: {
-                    xs: 50,
-                    md: 60,
-                  },
-
-                  borderRadius: "50%",
-                  backgroundColor: "#25D366",
-
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-
-                  flexShrink: 0,
-                  fontSize: "1.4rem",
-                }}
-              >
-                <FaWhatsapp />
-              </Box>
-
-              <Box>
-
-                <Typography
-                  sx={{
-                    color: "#9ca3af",
-
-                    fontSize: {
-                      xs: "0.75rem",
-                      md: "0.9rem",
-                    },
-                  }}
-                >
-                  WhatsApp
-                </Typography>
-
-                <Typography
-                  component="a"
-                  href={socialMedia.whatsapplink}
-                  target="_blank"
-
-                  sx={{
-                    color: "#fff",
-                    textDecoration: "none",
-                    fontWeight: "500",
-
-                    transition: "0.3s",
-
-                    fontSize: {
-                      xs: "0.88rem",
-                      md: "1.1rem",
-                    },
-
-                    "&:hover": {
-                      color: "#25D366",
-                    },
-                  }}
-                >
-                  Quick Chat Support
-                </Typography>
-
-              </Box>
-
-            </Box>
-
-          </Card>
-
-        </Grid>
-
-        {/* Right Side */}
+        {/* Main Grid */}
         <Grid
-          size={{
-            xs: 12,
-            md: 6,
+          container
+          spacing={{
+            xs: 3,
+            md: 5,
           }}
         >
 
-          <Card
-            sx={{
-              background:
-                "linear-gradient(145deg, #111, #1a1a1a)",
-
-              border: "1px solid #262626",
-
-              borderRadius: {
-                xs: "22px",
-                md: "30px",
-              },
-
-              p: {
-                xs: 3,
-                md: 5,
-              },
-
-              color: "#fff",
-              height: "100%",
+          {/* Left Side */}
+          <Grid
+            size={{
+              xs: 12,
+              md: 6,
             }}
           >
 
-            <Typography
+            <Card
               sx={{
-                fontWeight: "bold",
+                background:
+                  "linear-gradient(145deg, #111, #1a1a1a)",
 
-                mb: 5,
+                border: "1px solid #262626",
 
-                fontSize: {
-                  xs: "1.7rem",
-                  md: "2.4rem",
+                borderRadius: {
+                  xs: "22px",
+                  md: "30px",
                 },
+
+                p: {
+                  xs: 3,
+                  md: 5,
+                },
+
+                color: "#fff",
+                height: "100%",
               }}
             >
-              Social Platforms
-            </Typography>
 
-            <Grid
-              container
-              spacing={2}
-            >
+              <Typography
+                sx={{
+                  fontWeight: "bold",
 
-              {socialLinks.map((social, index) => (
+                  mb: 5,
 
-                <Grid
-                  key={index}
+                  fontSize: {
+                    xs: "1.7rem",
+                    md: "2.4rem",
+                  },
+                }}
+              >
+                Contact Information
+              </Typography>
 
-                  size={{
-                    xs: 6,
-                    sm: 6,
+              {/* Email */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                  mb: 4,
+                }}
+              >
+
+                <Box
+                  sx={{
+                    width: {
+                      xs: 50,
+                      md: 60,
+                    },
+
+                    height: {
+                      xs: 50,
+                      md: 60,
+                    },
+
+                    borderRadius: "50%",
+                    backgroundColor: "#f97316",
+
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+
+                    flexShrink: 0,
+                    fontSize: "1.4rem",
                   }}
                 >
+                  <FaEnvelope />
+                </Box>
 
-                  <Card
-                    component="a"
-                    href={social.link}
-                    target="_blank"
+                <Box>
 
+                  <Typography
                     sx={{
-                      textDecoration: "none",
-                      backgroundColor: "#181818",
-                      borderRadius: "20px",
-                      color: social.color,
-                      p: {
-                        xs: 2.5,
-                        md: 4,
-                      },
+                      color: "#9ca3af",
 
-                      display: "flex",
-                      flexDirection: "column",
-
-                      alignItems: "center",
-                      justifyContent: "center",
-
-                      gap: 2,
-
-                      transition: "0.4s",
-
-                      cursor: "pointer",
-
-                      "&:hover": {
-                        backgroundColor: social.color,
-                        color: "#fff",
-                        transform: "translateY(-8px)",
+                      fontSize: {
+                        xs: "0.75rem",
+                        md: "0.9rem",
                       },
                     }}
                   >
+                    Email
+                  </Typography>
 
-                    {social.icon}
+                  <Typography
+                    component="a"
+                    href={`mailto:${socialMedia.Email}`}
 
-                    <Typography
+                    sx={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      fontWeight: "500",
+
+                      transition: "0.3s",
+
+                      fontSize: {
+                        xs: "0.88rem",
+                        md: "1.1rem",
+                      },
+
+                      wordBreak: "break-word",
+
+                      "&:hover": {
+                        color: "#f97316",
+                      },
+                    }}
+                  >
+                    {socialMedia.Email}
+                  </Typography>
+
+                </Box>
+
+              </Box>
+
+              {/* Phone */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                  mb: 4,
+                }}
+              >
+
+                <Box
+                  sx={{
+                    width: {
+                      xs: 50,
+                      md: 60,
+                    },
+
+                    height: {
+                      xs: 50,
+                      md: 60,
+                    },
+
+                    borderRadius: "50%",
+                    backgroundColor: "#f97316",
+
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+
+                    flexShrink: 0,
+                    fontSize: "1.4rem",
+                  }}
+                >
+                  <FaPhoneAlt />
+                </Box>
+
+                <Box>
+
+                  <Typography
+                    sx={{
+                      color: "#9ca3af",
+
+                      fontSize: {
+                        xs: "0.75rem",
+                        md: "0.9rem",
+                      },
+                    }}
+                  >
+                    Phone
+                  </Typography>
+
+                  <Typography
+                    component="a"
+                    href={`tel:+${socialMedia.mobileNumber}`}
+
+                    sx={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      fontWeight: "500",
+
+                      transition: "0.3s",
+
+                      fontSize: {
+                        xs: "0.88rem",
+                        md: "1.1rem",
+                      },
+
+                      "&:hover": {
+                        color: "#f97316",
+                      },
+                    }}
+                  >
+                    +{socialMedia.mobileNumber}
+                  </Typography>
+
+                </Box>
+
+              </Box>
+
+              {/* WhatsApp */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                }}
+              >
+
+                <Box
+                  sx={{
+                    width: {
+                      xs: 50,
+                      md: 60,
+                    },
+
+                    height: {
+                      xs: 50,
+                      md: 60,
+                    },
+
+                    borderRadius: "50%",
+                    backgroundColor: "#25D366",
+
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+
+                    flexShrink: 0,
+                    fontSize: "1.4rem",
+                  }}
+                >
+                  <FaWhatsapp />
+                </Box>
+
+                <Box>
+
+                  <Typography
+                    sx={{
+                      color: "#9ca3af",
+
+                      fontSize: {
+                        xs: "0.75rem",
+                        md: "0.9rem",
+                      },
+                    }}
+                  >
+                    WhatsApp
+                  </Typography>
+
+                  <Typography
+                    component="a"
+                    href={socialMedia.whatsapplink}
+                    target="_blank"
+
+                    sx={{
+                      color: "#fff",
+                      textDecoration: "none",
+                      fontWeight: "500",
+
+                      transition: "0.3s",
+
+                      fontSize: {
+                        xs: "0.88rem",
+                        md: "1.1rem",
+                      },
+
+                      "&:hover": {
+                        color: "#25D366",
+                      },
+                    }}
+                  >
+                    Quick Chat Support
+                  </Typography>
+
+                </Box>
+
+              </Box>
+
+            </Card>
+
+          </Grid>
+
+          {/* Right Side */}
+          <Grid
+            size={{
+              xs: 12,
+              md: 6,
+            }}
+          >
+
+            <Card
+              sx={{
+                background:
+                  "linear-gradient(145deg, #111, #1a1a1a)",
+
+                border: "1px solid #262626",
+
+                borderRadius: {
+                  xs: "22px",
+                  md: "30px",
+                },
+
+                p: {
+                  xs: 3,
+                  md: 5,
+                },
+
+                color: "#fff",
+                height: "100%",
+              }}
+            >
+
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+
+                  mb: 5,
+
+                  fontSize: {
+                    xs: "1.7rem",
+                    md: "2.4rem",
+                  },
+                }}
+              >
+                Social Platforms
+              </Typography>
+
+              <Grid
+                container
+                spacing={2}
+              >
+
+                {socialLinks.map((social, index) => (
+
+                  <Grid
+                    key={index}
+
+                    size={{
+                      xs: 6,
+                      sm: 6,
+                    }}
+                  >
+
+                    <Card
+                      component="a"
+                      href={social.link}
+                      target="_blank"
+
                       sx={{
-                        fontWeight: "600",
-
-                        fontSize: {
-                          xs: "0.9rem",
-                          md: "1rem",
+                        textDecoration: "none",
+                        backgroundColor: "#181818",
+                        borderRadius: "20px",
+                        color: social.color,
+                        p: {
+                          xs: 2.5,
+                          md: 4,
                         },
 
-                        transition: "0.3s",
+                        display: "flex",
+                        flexDirection: "column",
+
+                        alignItems: "center",
+                        justifyContent: "center",
+
+                        gap: 2,
+
+                        transition: "0.4s",
+
+                        cursor: "pointer",
+
+                        "&:hover": {
+                          backgroundColor: social.color,
+                          color: "#fff",
+                          transform: "translateY(-8px)",
+                        },
                       }}
                     >
-                      {social.name}
-                    </Typography>
 
-                  </Card>
+                      {social.icon}
 
-                </Grid>
+                      <Typography
+                        sx={{
+                          fontWeight: "600",
 
-              ))}
+                          fontSize: {
+                            xs: "0.9rem",
+                            md: "1rem",
+                          },
 
-            </Grid>
+                          transition: "0.3s",
+                        }}
+                      >
+                        {social.name}
+                      </Typography>
 
-          </Card>
+                    </Card>
+
+                  </Grid>
+
+                ))}
+
+              </Grid>
+
+            </Card>
+
+          </Grid>
 
         </Grid>
 
-      </Grid>
-
-    </Box>
+      </Box>
+    </>
   );
 }
 

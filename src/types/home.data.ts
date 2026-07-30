@@ -1,11 +1,13 @@
 export const mapInfo = (
     artistData: any[],
     artworkData: any[] = [],
+    stats: any = {},
     collaborationData: any[] = [],
     ReviewData: any[] = []
 ) => {
     const artist = artistData?.[0];
     const socialLink = artist?.socialLinks;
+    console.log(stats?.subscriberCount)
 
     return {
         name: artist?.name || "",
@@ -26,27 +28,35 @@ export const mapInfo = (
         artMilestones: [
             {
                 title: "YouTube Subscribers",
-                achievement: "5,000+",
+                achievement: Number(stats?.subscriberCount || 0),
+            },
+            {
+                title: "YouTube Reach",
+                achievement: Number(stats?.viewCount || 0),
+            },
+            {
+                title: "YouTube Videos",
+                achievement: Number(stats?.videoCount || 0),
             },
             {
                 title: "Instagram Followers",
-                achievement: "10,000+",
+                achievement: 10000,
             },
             {
                 title: "Artwork Created",
-                achievement: `${artworkData.length || 0}+`,
+                achievement: artworkData.length || 0,
             },
             {
                 title: "Collaborations",
-                achievement: `${collaborationData.length==0 ? 2: collaborationData.length}+`,
+                achievement: collaborationData.length || 2,
             },
             {
                 title: "Happy Clients",
-                achievement: `${ReviewData.length == 0 ? 15: ReviewData.length }+`,
+                achievement: ReviewData.length || 15,
             },
             {
                 title: "Years Experience",
-                achievement: `${artist?.experience || 0}+` ,
+                achievement: artist?.experience || 0,
             },
         ],
     };
