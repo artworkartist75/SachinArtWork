@@ -6,11 +6,14 @@ import { mapArtistInfo } from "../types/artist.data";
 import SEO from "../services/SEO";
 import { websiteJsonLdAboutPage } from "../services/JSON-LD";
 import Loader from "../layouts/Loader";
-
+import { useTheme as useAppTheme } from "../ThemeContext";
+import { skill } from "../data/skill";
 
 function About() {
   const { data: artistData, isLoading:artistLoading } = useGetArtist();
   const { data: artWorkData, isLoading:artworkLoading } = useGetArtwork();
+  const { theme } = useAppTheme();
+  const isDark = theme === "dark";
   // const { data: collabData, isLoading:collabLoading } = useGetCollab();
   const [showFullBio, setShowFullBio] = useState(false);
 
@@ -44,14 +47,14 @@ function About() {
         url="https://sachinartwork.vercel.app/about"
         jsonLd={JsonLdAboout}
       />
-      <div className="min-h-screen bg-black text-white">
+      <div className={`min-h-screen ${isDark ? "bg-black text-white" : "bg-gray-50 text-gray-900"}`}>
 
         {/* Hero Section */}
         <section className="grid md:grid-cols-2 gap-12 items-center w-full min-h-screen bg-cover bg-center bg-no-repeat"
         // className="w-full min-h-screen bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+            ${isDark ? "linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8))" : "linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.84))"},
             url(${artistInfo.backgroundImage})
           `,
           backgroundAttachment:"fixed"
@@ -70,7 +73,7 @@ function About() {
               Into Artwork
             </h1>
 
-            <p className="text-gray-200 leading-7 text-sm md:text-base mb-6">
+            <p className={`leading-7 text-sm md:text-base mb-6 ${isDark ? "text-gray-200" : "text-gray-700"}`}>
               {/* Hi, I'm Kapil — a passionate sketch artist and digital creator
               focused on creating emotional, realistic, and visually engaging
               artworks. My work combines creativity, storytelling, and artistic
@@ -103,7 +106,7 @@ function About() {
                   {artistInfo.stats.artworksCreated}+
                 </h2>
 
-                <p className="text-gray-400 mt-2 text-sm">
+                <p className={`mt-2 text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
                   Artworks Created
                 </p>
               </div>
@@ -113,7 +116,7 @@ function About() {
                   {artistInfo.stats.happyClients}+
                 </h2>
 
-                <p className="text-gray-400 mt-2 text-sm">
+                <p className={`mt-2 text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
                   Happy Clients
                 </p>
               </div>
@@ -123,7 +126,7 @@ function About() {
                   {artistInfo.stats.yearsExperience}+
                 </h2>
 
-                <p className="text-gray-400 mt-2 text-sm">
+                <p className={`mt-2 text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
                   Years Experience
                 </p>
               </div>
@@ -138,7 +141,7 @@ function About() {
             <div className="absolute w-[300px] h-[300px] bg-orange-500/20 blur-[120px] rounded-full"></div>
 
             {/* Image */}
-            <div className="relative overflow-hidden rounded-3xl border border-gray-800">
+            <div className={`relative overflow-hidden rounded-3xl border ${isDark ? "border-gray-800" : "border-gray-300"}`}>
               <img
                 src={artistInfo.picture}
                 alt="Artist"
@@ -158,7 +161,7 @@ function About() {
               Artistic Skills
             </h2>
 
-            <p className="text-gray-400 mt-5 max-w-2xl mx-auto leading-7">
+            <p className={`mt-5 max-w-2xl mx-auto leading-7 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
               Specialized in creating realistic sketches, creative paintings,
               and modern digital artwork with attention to every detail.
             </p>
@@ -167,71 +170,22 @@ function About() {
           </div>
 
           {/* Skills Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-
-            {/* Skill 1 */}
-            <div className="bg-[#111] border border-gray-800 rounded-3xl p-6 text-center hover:border-orange-500 transition duration-300">
-
-              <div className="text-5xl mb-5">
-                ✏️
-              </div>
-
-              <h3 className="text-2xl font-semibold mb-3">
-                Pencil Sketch
-              </h3>
-
-              <p className="text-gray-400 text-sm leading-6">
-                Realistic handmade portraits and creative sketch artwork.
-              </p>
-            </div>
-
-            {/* Skill 2 */}
-            <div className="bg-[#111] border border-gray-800 rounded-3xl p-6 text-center hover:border-orange-500 transition duration-300">
-
-              <div className="text-5xl mb-5">
-                🎨
-              </div>
-
-              <h3 className="text-2xl font-semibold mb-3">
-                Paintings
-              </h3>
-
-              <p className="text-gray-400 text-sm leading-6">
-                Acrylic and watercolor paintings with artistic creativity.
-              </p>
-            </div>
-
-            {/* Skill 3 */}
-            <div className="bg-[#111] border border-gray-800 rounded-3xl p-6 text-center hover:border-orange-500 transition duration-300">
-
-              <div className="text-5xl mb-5">
-                🖌️
-              </div>
-
-              <h3 className="text-2xl font-semibold mb-3">
-                Digital Art
-              </h3>
-
-              <p className="text-gray-400 text-sm leading-6">
-                Creative illustrations and digital artwork for modern platforms.
-              </p>
-            </div>
-
-            {/* Skill 4 */}
-            <div className="bg-[#111] border border-gray-800 rounded-3xl p-6 text-center hover:border-orange-500 transition duration-300">
-
-              <div className="text-5xl mb-5">
-                🧠
-              </div>
-
-              <h3 className="text-2xl font-semibold mb-3">
-                Creativity
-              </h3>
-
-              <p className="text-gray-400 text-sm leading-6">
-                Unique concepts and storytelling through artistic visuals.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-2 sm:px-3 md:px-6">
+            
+            {
+              skill.map((skill, index) => (
+                <div
+                  key={index}
+                  className={`rounded-3xl p-6 text-center hover:border-orange-500 transition duration-300 ${isDark ? "bg-[#111] border border-gray-800" : "bg-white border border-gray-300"}`}
+                >
+                  <div className="text-5xl mb-5">{skill.icon}</div>
+                  <h3 className="text-2xl font-semibold mb-3">{skill.title}</h3>
+                  <p className={`text-sm leading-6 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+                    {skill.description}
+                  </p>
+                </div>
+              ))  
+            }
 
           </div>
         </section>
@@ -241,9 +195,9 @@ function About() {
         {collabrationInfo()}
 
         {/* Quote Section */}
-        <section className="pt-24">
+        <section className="pt-24 p-2">
 
-          <div className="bg-[#111] border border-gray-800 rounded-3xl p-10 md:p-16 text-center">
+          <div className={`rounded-3xl p-10 md:p-16 text-center ${isDark ? "bg-[#111] border border-gray-800" : "bg-white border border-gray-300"}`}>
 
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
               “Art is not what you see, <br />

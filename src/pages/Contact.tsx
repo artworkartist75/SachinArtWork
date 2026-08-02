@@ -16,9 +16,12 @@ import { useGetArtist } from "../hooks/useArtist";
 import { mapMedia } from "../types/contact.data";
 import SEO from "../services/SEO";
 import Loader from "../layouts/Loader";
+import { useTheme as useAppTheme } from "../ThemeContext";
 
 function Contact() {
   const { data: artistData, isLoading:artistLoading } = useGetArtist();
+  const { theme } = useAppTheme();
+  const isDark = theme === "dark";
 
   if(artistLoading) return <Loader/>
   
@@ -66,8 +69,8 @@ function Contact() {
       <Box
         sx={{
           minHeight: "100vh",
-          backgroundColor: "#000",
-          color: "#fff",
+          backgroundColor: isDark ? "#000" : "#f8fafc",
+          color: isDark ? "#fff" : "#111827",
 
           px: {
             xs: 2,
@@ -127,7 +130,7 @@ function Contact() {
 
           <Typography
             sx={{
-              color: "#9ca3af",
+              color: isDark ? "#9ca3af" : "#6b7280",
               maxWidth: "720px",
               mx: "auto",
               mt: 3,
@@ -181,9 +184,9 @@ function Contact() {
             <Card
               sx={{
                 background:
-                  "linear-gradient(145deg, #111, #1a1a1a)",
+                  isDark ? "linear-gradient(145deg, #111, #1a1a1a)" : "none",
 
-                border: "1px solid #262626",
+                border: isDark ? "1px solid #262626" : "1px solid #ddd",
 
                 borderRadius: {
                   xs: "22px",
@@ -195,7 +198,7 @@ function Contact() {
                   md: 5,
                 },
 
-                color: "#fff",
+                color: isDark ? "#fff" : "#111827",
                 height: "100%",
               }}
             >
@@ -271,7 +274,7 @@ function Contact() {
                     href={`mailto:${socialMedia.Email}`}
 
                     sx={{
-                      color: "#fff",
+                      color: isDark ? "#fff" : "#111827",
                       textDecoration: "none",
                       fontWeight: "500",
 
@@ -285,7 +288,7 @@ function Contact() {
                       wordBreak: "break-word",
 
                       "&:hover": {
-                        color: "#f97316",
+                        color: isDark ? "#f97316" : "#f97316",
                       },
                     }}
                   >
@@ -352,7 +355,7 @@ function Contact() {
                     href={`tel:+${socialMedia.mobileNumber}`}
 
                     sx={{
-                      color: "#fff",
+                      color: isDark ? "#fff" : "#111827",
                       textDecoration: "none",
                       fontWeight: "500",
 
@@ -431,7 +434,7 @@ function Contact() {
                     target="_blank"
 
                     sx={{
-                      color: "#fff",
+                      color: isDark ? "#fff" : "#111827",
                       textDecoration: "none",
                       fontWeight: "500",
 
@@ -469,9 +472,12 @@ function Contact() {
             <Card
               sx={{
                 background:
-                  "linear-gradient(145deg, #111, #1a1a1a)",
+                isDark ? "linear-gradient(145deg, #111, #1a1a1a)" : "none",
 
-                border: "1px solid #262626",
+                border: isDark ? "1px solid #262626" : "1px solid #ddd",
+                  // "linear-gradient(145deg, #111, #1a1a1a)",
+
+                // border: "1px solid #262626",
 
                 borderRadius: {
                   xs: "22px",
@@ -483,7 +489,7 @@ function Contact() {
                   md: 5,
                 },
 
-                color: "#fff",
+                color: isDark ? "#fff" : "#111827",
                 height: "100%",
               }}
             >
@@ -526,7 +532,7 @@ function Contact() {
 
                       sx={{
                         textDecoration: "none",
-                        backgroundColor: "#181818",
+                        backgroundColor: isDark ? "#181818" : "#f3f4f6",
                         borderRadius: "20px",
                         color: social.color,
                         p: {

@@ -11,8 +11,11 @@ import {
 } from "react-icons/fa";
 
 import socialMedia from "../data/socialMedia";
+import { useTheme as useAppTheme } from "../ThemeContext";
 
 function CollaborationContact() {
+  const { theme } = useAppTheme();
+  const isDark = theme === "dark";
 
   return (
     <Box
@@ -24,8 +27,8 @@ function CollaborationContact() {
 
         pb: 10,
 
-        backgroundColor: "#000",
-        color: "#fff",
+        backgroundColor: isDark ? "#000" : "#f8fafc",
+        color: isDark ? "#fff" : "#111827",
       }}
     >
 
@@ -77,7 +80,7 @@ function CollaborationContact() {
 
         <Typography
           sx={{
-            color: "#9ca3af",
+            color: isDark ? "#9ca3af" : "#6b7280",
 
             maxWidth: "700px",
 
@@ -142,14 +145,15 @@ function CollaborationContact() {
             sx={{
               textDecoration: "none",
 
-              background:
-                "linear-gradient(145deg, #111, #1a1a1a)",
+              background: isDark
+                ? "linear-gradient(145deg, #111, #1a1a1a)"
+                : "linear-gradient(145deg, #fff, #f3f4f6)",
 
-              border: "1px solid #262626",
+              border: isDark ? "1px solid #262626" : "1px solid #e5e7eb",
 
               borderRadius: "24px",
 
-              color: "#fff",
+              color: isDark ? "#fff" : "#111827",
 
               p: {
                 xs: 2,
@@ -221,14 +225,15 @@ function CollaborationContact() {
             sx={{
               textDecoration: "none",
 
-              background:
-                "linear-gradient(145deg, #111, #1a1a1a)",
+              background: isDark
+                ? "linear-gradient(145deg, #111, #1a1a1a)"
+                : "linear-gradient(145deg, #fff, #f3f4f6)",
 
-              border: "1px solid #262626",
+              border: isDark ? "1px solid #262626" : "1px solid #e5e7eb",
 
               borderRadius: "24px",
 
-              color: "#fff",
+              color: isDark ? "#fff" : "#111827",
 
               p: {
                 xs: 2,
@@ -298,14 +303,15 @@ function CollaborationContact() {
             sx={{
               textDecoration: "none",
 
-              background:
-                "linear-gradient(145deg, #111, #1a1a1a)",
+              background: isDark
+                ? "linear-gradient(145deg, #111, #1a1a1a)"
+                : "linear-gradient(145deg, #fff, #f3f4f6)",
 
-              border: "1px solid #262626",
+              border: isDark ? "1px solid #262626" : "1px solid #e5e7eb",
 
               borderRadius: "24px",
 
-              color: "#fff",
+              color: isDark ? "#fff" : "#111827",
 
               p: {
                 xs: 2,
@@ -377,14 +383,15 @@ function CollaborationContact() {
             sx={{
               textDecoration: "none",
 
-              background:
-                "linear-gradient(145deg, #111, #1a1a1a)",
+              background: isDark
+                ? "linear-gradient(145deg, #111, #1a1a1a)"
+                : "linear-gradient(145deg, #fff, #f3f4f6)",
 
-              border: "1px solid #262626",
+              border: isDark ? "1px solid #262626" : "1px solid #e5e7eb",
 
               borderRadius: "24px",
 
-              color: "#fff",
+              color: isDark ? "#fff" : "#111827",
 
               p: {
                 xs: 2,

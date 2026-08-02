@@ -8,10 +8,13 @@ import Avatar from "@mui/material/Avatar";
 import Rating from "@mui/material/Rating";
 
 import topReview from "../data/topReview";
+import { useTheme as useAppTheme } from "../ThemeContext";
 
 function ClientReviews() {
 
   const sliderRef = useRef<HTMLDivElement>(null);
+  const { theme } = useAppTheme();
+  const isDark = theme === "dark";
 
   useEffect(() => {
 
@@ -57,8 +60,8 @@ function ClientReviews() {
           md: 12,
         },
 
-        backgroundColor: "#000",
-        color: "#fff",
+        backgroundColor: isDark ? "#000" : "#f8fafc",
+        color: isDark ? "#fff" : "#111827",
         overflow: "hidden",
       }}
     >
@@ -109,7 +112,7 @@ function ClientReviews() {
 
         <Typography
           sx={{
-            color: "#9ca3af",
+            color: isDark ? "#9ca3af" : "#6b7280",
 
             maxWidth: "700px",
 
@@ -159,14 +162,13 @@ function ClientReviews() {
             xs: 2,
             md: 3,
           },
-
           overflowX: "auto",
-
           scrollBehavior: "smooth",
-
+          
           px: {
             xs: 2,
-            md: 4,
+            sm: 3,
+            md: 6,
           },
 
           scrollSnapType: "x mandatory",
@@ -199,24 +201,25 @@ function ClientReviews() {
 
               scrollSnapAlign: "start",
 
-              background:
-                "linear-gradient(145deg, #111, #1a1a1a)",
+              background: isDark
+                ? "linear-gradient(145deg, #111, #1a1a1a)"
+                : "linear-gradient(145deg, #fff, #f3f4f6)",
 
-              border: "1px solid #262626",
+              border: isDark ? "1px solid #262626" : "1px solid #e5e7eb",
 
               borderRadius: {
                 xs: "20px",
                 md: "28px",
               },
 
-              color: "#fff",
+              color: isDark ? "#fff" : "#111827",
 
               flexShrink: 0,
 
               transition: "0.4s",
 
               "&:hover": {
-                borderColor: "#f97316",
+                borderColor: isDark ? "#f97316" : "#fb923c",
                 transform: "translateY(-8px)",
               },
             }}
@@ -245,7 +248,7 @@ function ClientReviews() {
               {/* Review */}
               <Typography
                 sx={{
-                  color: "#d1d5db",
+                  color: isDark ? "#d1d5db" : "#4b5563",
 
                   lineHeight: {
                     xs: 1.7,

@@ -7,9 +7,12 @@ import CardContent from "@mui/material/CardContent";
 // import artworks from "../data/FeaturedWorks";
 import { useFeatureArtwork } from "../hooks/useArtwork";
 import { mapFeaturedArtworks } from "../types/featured.data";
+import { useTheme as useAppTheme } from "../ThemeContext";
 
 function FeaturedWorks() {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const { theme } = useAppTheme();
+  const isDark = theme === "dark";
   useEffect(() => {
 
     const slider = sliderRef.current;
@@ -68,8 +71,8 @@ function FeaturedWorks() {
 
             pb: 6,
 
-            backgroundColor: "#000",
-            color: "#fff",
+            backgroundColor: isDark ? "#000" : "#f8fafc",
+            color: isDark ? "#fff" : "#111827",
 
             overflow: "hidden",
           }}
@@ -105,7 +108,7 @@ function FeaturedWorks() {
 
             <Typography
               sx={{
-                color: "#9ca3af",
+                color: isDark ? "#9ca3af" : "#6b7280",
 
                 maxWidth: "700px",
 
@@ -199,10 +202,11 @@ function FeaturedWorks() {
 
                     scrollSnapAlign: "start",
 
-                    background:
-                      "linear-gradient(145deg, #111, #1a1a1a)",
+                    background: isDark
+                      ? "linear-gradient(145deg, #111, #1a1a1a)"
+                      : "linear-gradient(145deg, #fff, #f3f4f6)",
 
-                    border: "1px solid #262626",
+                    border: isDark ? "1px solid #262626" : "1px solid #e5e7eb",
 
                     borderRadius: {
                       xs: "20px",
@@ -211,7 +215,7 @@ function FeaturedWorks() {
 
                     overflow: "hidden",
 
-                    color: "#fff",
+                    color: isDark ? "#fff" : "#111827",
 
                     flexShrink: 0,
 
@@ -220,7 +224,7 @@ function FeaturedWorks() {
                     cursor: "pointer",
 
                     "&:hover": {
-                      borderColor: "#f97316",
+                      borderColor: isDark ? "#f97316" : "#fb923c",
                       transform: "translateY(-8px)",
                     },
                   }}

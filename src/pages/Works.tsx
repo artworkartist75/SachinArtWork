@@ -9,10 +9,14 @@ import { mapFeaturedArtworks } from "../types/featured.data";
 import SEO from "../services/SEO";
 import { websiteJsonLdWorkPage } from "../services/JSON-LD";
 import Loader from "../layouts/Loader";
+import { useTheme as useAppTheme } from "../ThemeContext";
 
 function ArtServices() {
   const icons = ["✏️", "🎨", "🖥️", "💡"];
   const { data: artworkData, isLoading:artLoading } = useGetArtwork();
+  const { theme } = useAppTheme();
+
+  const isDark = theme === "dark";
   
   if(artLoading) return <Loader/>
 
@@ -36,8 +40,8 @@ function ArtServices() {
 
           pb: 6,
 
-          backgroundColor: "#000",
-          color: "#fff",
+          backgroundColor: isDark ? "#000" : "#fff",
+          color: isDark ? "#fff" : "#000",
         }}
       >
 
@@ -83,6 +87,13 @@ function ArtServices() {
             xs: 2,
             md: 4,
           }}
+          sx={{
+            px: {
+            xs: 1,
+            sm: 2,
+            md: 5,
+          },
+          }}
         >
           {artwork.map((work) => (
             <Grid
@@ -95,18 +106,18 @@ function ArtServices() {
             >
               <Card
                 sx={{
-                  background: "linear-gradient(145deg, #111, #1a1a1a)",
+                  background: isDark ? "linear-gradient(145deg, #111, #1a1a1a)" : "linear-gradient(145deg, #fff, #f0f0f0)",
                   border: "1px solid #262626",
                   borderRadius: {
                     xs: "18px",
                     md: "28px",
                   },
-                  color: "#fff",
+                  color: isDark ? "#fff" : "#111827",
                   height: "100%",
                   transition: "0.4s",
                   cursor: "pointer",
                   "&:hover": {
-                    borderColor: "#f97316",
+                    borderColor: isDark ? "1px solid #262626" : "1px solid #e5e7eb",
                     transform: "translateY(-8px)",
                   },
                 }}
@@ -150,7 +161,7 @@ function ArtServices() {
                   {/* Description */}
                   <Typography
                     sx={{
-                      color: "#9ca3af",
+                      color: isDark ? "#9ca3af" : "#6b7280",
                       lineHeight: {
                         xs: 1.5,
                         md: 1.8,
@@ -215,7 +226,7 @@ function ArtServices() {
               width: "80px",
               height: "4px",
 
-              backgroundColor: "#f97316",
+              backgroundColor: isDark ? "#f97316" : "#f97316",
 
               mx: "auto",
               mt: 3,
@@ -233,6 +244,13 @@ function ArtServices() {
             xs: 2,
             md: 4,
           }}
+          sx={{
+            px: {
+            xs: 2,
+            sm: 3,
+            md: 6,
+          },
+          }}  
         >
 
           {ArtService.map((service, index) => (
@@ -249,17 +267,18 @@ function ArtServices() {
 
               <Card
                 sx={{
-                  background:
-                    "linear-gradient(145deg, #111, #1a1a1a)",
+                  background: isDark
+                    ? "linear-gradient(145deg, #111, #1a1a1a)"
+                    : "linear-gradient(145deg, #fff, #f3f4f6)",
 
-                  border: "1px solid #262626",
+                  border: isDark ? "1px solid #262626" : "1px solid #e5e7eb",
 
                   borderRadius: {
                     xs: "18px",
                     md: "28px",
                   },
 
-                  color: "#fff",
+                  color: isDark ? "#fff" : "#111827",
 
                   height: "100%",
 
@@ -268,7 +287,7 @@ function ArtServices() {
                   cursor: "pointer",
 
                   "&:hover": {
-                    borderColor: "#f97316",
+                    borderColor: isDark ? "#f97316" : "#fb923c",
                     transform: "translateY(-8px)",
                   },
                 }}
@@ -339,7 +358,7 @@ function ArtServices() {
                   {/* Description */}
                   <Typography
                     sx={{
-                      color: "#9ca3af",
+                      color: isDark ? "#9ca3af" : "#6b7280",
 
                       lineHeight: {
                         xs: 1.5,
