@@ -64,6 +64,7 @@ function Contact() {
       <SEO
         title="Contact | Sachin Artwork"
         description="Contact Sachin for commissioned paintings, portraits and collaborations."
+        keywords="Sachin artist, sachinartist, artist,Contact Sachin for commissioned paintings, portraits and collaborations."
         url="https://sachinartwork.vercel.app/contact"
       />
       <Box

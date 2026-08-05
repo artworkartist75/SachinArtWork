@@ -181,7 +181,7 @@ function FeaturedWorks() {
 
             { 
               (featureWork.length>1 
-                ? [...featureWork, ...featureWork]
+                ? [...featureWork]
                 :featureWork)
                 .map((art, index) => (
                 <Card

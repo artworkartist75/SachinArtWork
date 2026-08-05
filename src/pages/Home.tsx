@@ -57,7 +57,7 @@ return (
         <SEO
             title="Sachin Artwork | Original Paintings & Sketches"
             description="Explore original paintings, portraits, pencil sketches, and digital artwork by Sachin."
-            keywords="Sachin Artwork, Paintings, Pencil Sketch, Portrait, Digital Art"
+            keywords="Sachin artist, sachinartist, artist,Sachin Artwork, Paintings, Pencil Sketch, Portrait, Digital Art"
             url="https://sachinartwork.vercel.app/"
             jsonLd={websiteJsonLdHomePage}         
         />

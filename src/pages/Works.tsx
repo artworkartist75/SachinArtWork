@@ -27,7 +27,7 @@ function ArtServices() {
       <SEO
         title="Artworks | Sachin Artwork"
         description="Browse original paintings, portraits, landscape art and custom artwork by Sachin."
-        keywords="Artworks, Paintings, Canvas Art, Portrait Sketch"
+        keywords="Sachin artist, sachinartist, artist,Sachin Artwork, Artworks, Paintings, Canvas Art, Portrait Sketch"
         url="https://sachinartwork.vercel.app/work"
         jsonLd={websiteJsonLdWorkPage}
       />

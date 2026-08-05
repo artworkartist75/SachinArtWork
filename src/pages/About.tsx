@@ -43,7 +43,7 @@ function About() {
       <SEO
         title="About Artist | Sachin Artwork"
         description="Know more about artist Sachin, his artistic journey, exhibitions, collaborations and creative vision."
-        keywords="About Artist, Sachin Artwork, Artist Biography"
+        keywords="Sachin artist, sachinartist, artist, Sachin Artwork, About Artist, Sachin Artwork, Artist Biography"
         url="https://sachinartwork.vercel.app/about"
         jsonLd={JsonLdAboout}
       />

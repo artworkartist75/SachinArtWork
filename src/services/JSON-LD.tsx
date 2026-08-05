@@ -7,6 +7,8 @@ export const websiteJsonLdHomePage = {
       "url": "https://sachinartwork.vercel.app",
       "name": "Sachin Artwork",
       "alternateName": [
+        "sachin artist","sachinartist", "Sachin artist", "Sachinartist",
+        "artist sachin","artistsachin", "Artist Sachin", "ArtistSachin",
         "Sachin",
         "Sachin Art",
         "Sachin Artwork",
@@ -17,6 +19,8 @@ export const websiteJsonLdHomePage = {
         "Official portfolio of Sachin featuring original paintings, pencil sketches, portraits and digital artwork.",
       "inLanguage": "en-IN",
       "keywords": [
+        "sachin artist","sachinartist", "Sachin artist", "Sachinartist",
+        "artist sachin","artistsachin", "Artist Sachin", "ArtistSachin",
         "Sachin",
         "Sachin Artwork",
         "Sachin Art",
@@ -60,6 +64,8 @@ export const websiteJsonLdAboutPage = (artistInfo:any) =>  ({
   name: "Sachin",
 
   alternateName: [
+    "sachin artist","sachinartist", "Sachin artist", "Sachinartist",
+    "artist sachin","artistsachin", "Artist Sachin", "ArtistSachin",
     "Sachin Artwork",
     "Sachin Artist",
     "Sachin Art",
